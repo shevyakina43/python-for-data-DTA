@@ -12,17 +12,25 @@ df = pd.read_csv(url)
 
 print(df[["belongs_to_collection", "homepage", "tagline"]])
 
-
+# старый вариант
 # print(df.tagline)
-df["tagline"].fillna("without tagline", inplace=True)   # inplace - не только изменяет данные, но и перезаписывает их
-print(df.tagline)
+# df["tagline"].fillna("without tagline", inplace=True)   # inplace - не только изменяет данные, но и перезаписывает их
 
+# новая альтернатива старому вариану
+# df.fillna({"tagline"}: "without tagline", inplace=True) 
+df["tagline"] = df["tagline"].fillna("without tagline")
+# print(df.tagline)
 
+print(df.homepage)
+df.homepage = df.homepage.fillna("no homepage")
+print(df.homepage)
 
+print(df["belongs_to_collection"])
+df.fillna({"belongs_to_collection": "{}"}, inplace=True)
+print(df["belongs_to_collection"])
 
+df.info()
 
-# df["tagline"] = df["tagline"].fillna("without tagline")
-# # print(df.homepage)
-# df.homepage = df.homepage.fillna("no homepage")
-# print(df.homepage)
-
+df.dropna(inplace=True)
+print(df.isnull().sum( ))
+df.info()
