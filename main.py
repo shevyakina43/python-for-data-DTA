@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+
 
 url = "data/movies_metadata.csv"
 
@@ -10,7 +12,7 @@ df = pd.read_csv(url)
 # print(df.describe())
 # print(df.isnull().sum( ))
 
-print(df[["belongs_to_collection", "homepage", "tagline"]])
+# print(df[["belongs_to_collection", "homepage", "tagline"]])
 
 # старый вариант
 # print(df.tagline)
@@ -21,16 +23,28 @@ print(df[["belongs_to_collection", "homepage", "tagline"]])
 df["tagline"] = df["tagline"].fillna("without tagline")
 # print(df.tagline)
 
-print(df.homepage)
-df.homepage = df.homepage.fillna("no homepage")
-print(df.homepage)
+# print(df.homepage)
+# df.homepage = df.homepage.fillna("no homepage")
+# print(df.homepage)
 
-print(df["belongs_to_collection"])
-df.fillna({"belongs_to_collection": "{}"}, inplace=True)
-print(df["belongs_to_collection"])
+# print(df["belongs_to_collection"])
+# df.fillna({"belongs_to_collection": "{}"}, inplace=True)
+# # print(df["belongs_to_collection"])
 
-df.info()
+# df.info()
 
 df.dropna(inplace=True)
-print(df.isnull().sum( ))
+# print(df.isnull().sum( ))
 df.info()
+
+
+#-------------------------------
+
+print(df.head())
+print(df.genres)
+
+genres_counts = df['genres'].value_counts()
+print(genres_counts)
+
+print(genres_counts.index)
+print(genres_counts.values)
