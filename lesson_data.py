@@ -1,3 +1,4 @@
+scv формат - это ряд, в котором есть набор списков и словарей, он форматируется благодаря пандасу в привычный для нас вид
 import pandas as pd
 
 months = ['jan', 'feb', 'mar', 'apr']
@@ -7,47 +8,47 @@ sales = {
     'new_clients': [10, 20, 30, 40] # прирост клиентов
 }
 
-df = pd.DataFrame(data=sales, index=months)  # создаем табличку, и надо импортировать 
+df = pd.DataFrame(data=sales, index=months)  # создаем табличку дата фрейма, и надо импортировать, по умолчанию индексы считаются от нула, и чтобы они считались как нам надо - надо бабавить свою индексацию, у нас это месяцы
 print(df)
 
-# vector = [1, 2, 3]
-# print(vector * 2)
+# vector = [1, 2, 3]  # каждое число помножится, 
+# print(vector * 2) # когда вектор множится на число, тогда мы подваиваем наши числа, те 1, 2, 3, 1, 2, 3
 
-# series = pd.Series([1, 2, 3])
-# print(series * 2)
+# series = pd.Series([1, 2, 3])  # работа с данными, со столбиком
+# print(series * 2)  # умножаем столбик на число
 
-# series_str = pd.Series(["a", "b", "c"])
-# print(series_str[0])
+# series_str = pd.Series(["a", "b", "c"])  # сохраняется обращение с индексами
+# print(series_str[0])  # серия - это наш массив, одновыборочный, мы не можем записать туда всю таблицу или несколько столбцов, а 
 
-# months = ['jan', 'feb', 'mar', 'apr']
-# sales = [100, 200, 300, 400]
-# data = pd.Series(data=sales, index=months)
-# print(data)
-# print(data["feb"])
+# months = ['jan', 'feb', 'mar', 'apr']  # 
+# sales = [100, 200, 300, 400]  # 
+# data = pd.Series(data=sales, index=months)  # 
+# print(data)  # дата фрейм это многовыборный массив, мы туда можем передать сколько угодно данный, это прям в ввиде таблицы передается
+# print(data["feb"])  # 
 
-# print(df.head(2))  # З початку рядки
-# print(df.tail(1))  # з кінця рядки
+# print(df.head(2))  # З початку рядки, выводит первый 5 рядов, если задать определенную цифру, то  к прим 2-ой и выведеет
+# print(df.tail(1))  # з кінця рядки, с конца выведи данные
 
-# print(df.revenue)
+# print(df.revenue)  # обращение просто к столбику прибыли
 
-# print(df.info())
-# print(df.shape)  # (row, column)
-# print(df.columns)
-# print(df.describe())
-# print(df.dtypes)
+# print(df.info())  # 
+# print(df.shape)  # (row, column)   # этот метод помогает увидеть размер кортежа, сначала сколько рядов, а потом сколько столбцов
+# print(df.columns)  # 
+# print(df.describe())  # вывести типы, с чем мы работаем
+# print(df.dtypes)  # все что не воспринимается как число - выводится в обьект
 
-df.revenue = ['100a', '200', '300', '400']
-# print(df)
-# print(df.revenue.dtypes)
-df.revenue = pd.to_numeric(df.revenue, errors='coerce')
-# print(df)
-# print(df.describe())
-# print(df.revenue.dtypes)
+df.revenue = ['100a', '200', '300', '400']  # 
+# print(df)  # 
+# print(df.revenue.dtypes)  # 
+df.revenue = pd.to_numeric(df.revenue, errors='coerce')  # to_numeric - перенеси ряд на обьект, на что нам надо наш столбик воспроизвести и задачь, чтобы он обходил ошибки, некоторые данные мы изменить не можем в число, к примеру слова какие-то и вот этот метод говорит, что если ты нашел какую-то ошибку, то передай это нам , что там есть пустая клеточка
+# print(df)  # выводит снова таблицу, после того как мы ее изменили
+# print(df.describe())  # 
+# print(df.revenue.dtypes) # 
 
-print(df.loc[['feb', 'apr']])
+print(df.loc[['feb', 'apr']])  # 
 
-movies_df = pd.read_csv('data/movies_metadata.csv')
-# print(movies_df.to_string())
+movies_df = pd.read_csv('data/movies_metadata.csv')  # открой наш массив, 
+# print(movies_df.to_string())  # 
 
-pd.options.display.max_rows = 10
-print(pd.options.display.max_rows)
+pd.options.display.max_rows = 10  # 
+print(pd.options.display.max_rows)  # выводим наши рядочки из массива, а выше написано число, сколько нам выводить
